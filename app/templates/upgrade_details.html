@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="main-content-container container-fluid px-4">
+    <!-- Page Header -->
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <h3 class="page-title">升级日志详情</h3>
+        </div>
+        <div class="col-12 col-sm-8 text-center text-sm-right mb-0">
+          <a href="{{ url_for('upgrade_edit', id=upgrade_detail.id ) }}"><button type="button" class="btn btn-accent" >修改内容</button></a>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="card card-small mb-4">
+                {% if upgrade_detail %}
+                <div class="card-header border-bottom">
+                    <h6 class="m-0">{{ upgrade_detail.title }}</h6>
+                </div>
+                <div class="card-body" style="min-height:380px">
+                    <div class="card-text d-inline-block mb-3">
+                        {{ upgrade_detail.content|safe }}
+                    </div>
+
+                </div>
+                {% else %}
+                <h6 class="m-0">页面找不到了呢</h6>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+                <!-- Sliders & Progress Bars -->
+                <div class="card card-small mb-4">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">基本信息</h6>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item px-3">
+                      <!-- Progress Bars -->
+                      <div class="mb-3">
+                        <div class="text-muted d-block mb-3">
+                            <strong>创建人: </strong>
+                            <span>{{ upgrade_detail.creator }}</span>
+                        </div>
+                        <div class="text-muted d-block mb-3">
+                            <strong>创建时间: </strong>
+                            <span>{{upgrade_detail.create_time }}</span>
+                        </div>
+                        <div class="text-muted d-block mb-3">
+                            <strong>修改时间: </strong>
+                            {% if upgrade_detail.modify_time %}
+                            <span>{{upgrade_detail.modify_time }}</span>
+                            {% else %}
+                            <span></span>
+                            {% endif %}
+                        </div>
+                      </div>
+                      <!-- / Progress Bars -->
+                    </li>
+
+                  </ul>
+                </div>
+    </div>
+</div>
+{% endblock %}

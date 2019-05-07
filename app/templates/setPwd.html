@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+<div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            {{ message }} </div>
+
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+<div class="main-content-container container-fluid px-4">
+  <!-- Page Header -->
+  <div class="page-header row no-gutters py-4 mb-3 border-bottom">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+      <h3 class="page-title">修改密码</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card card-small mb-3">
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item px-3">
+            <form action="" method="post" class="form-validate" novalidate>
+              {{ form.hidden_tag() }}
+              <!-- Seamless Input Groups -->
+              <strong class="text-muted d-block mb-2">旧密码</strong>
+              <div class="input-group mb-3">
+                <div class="input-group input-group-seamless">
+                  <span class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock</i>
+                    </span>
+                  </span>
+                  {{ form.old_passwd(class="form-control") }}
+				</div>
+              </div>
+			  <strong class="text-muted d-block mb-2">新密码</strong>
+              <div class="input-group mb-3">
+                <div class="input-group input-group-seamless">
+                  <span class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock</i>
+                    </span>
+                  </span>
+                   {{ form.new_passwd(class="form-control") }}
+			    </div>
+              </div>
+              <strong class="text-muted d-block mb-2">确认新密码</strong>
+              <div class="input-group mb-3">
+                <div class="input-group input-group-seamless">
+                  <span class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock</i>
+                    </span>
+                  </span>
+                   {{ form.new_passwd2(class="form-control") }}
+			    </div>
+              </div>
+              {{ form.submit(class="btn btn-accent") }}
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

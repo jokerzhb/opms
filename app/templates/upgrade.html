@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="main-content-container container-fluid px-4">
+    <!-- Page Header -->
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <h3 class="page-title">升级日志</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9 col-md-12">
+            <!-- Add New Form -->
+            <div class="card card-small mb-3">
+                <div class="card-body">
+                    <form action="" method="post" class="add-new-post">
+                        {{ form.hidden_tag() }}
+                        {{ form.title(class="form-control form-control-lg mb-3", placeholder="请输入标题...") }}
+                        {{ form.content(class="form-control") }}
+                        {% for error in form.content.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                        <div class="mb-3"></div>
+                        {{ form.submit(class="btn btn-accent")}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="/static/ckeditor/ckeditor.js"></script>
+{{ ckeditor.config() }}
+{% endblock %}

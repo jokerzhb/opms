@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js h-100" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Edu OPMS Login</title>
+    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/static/styles/all.css" rel="stylesheet">
+    <link href="/static/styles/Material_Icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="/static/styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" href="/static/styles/extras.1.1.0.min.css">
+    <script async defer src="/static/js/buttons.js"></script>
+    <link rel="stylesheet" href="/static/styles/custom.css">
+  </head>
+
+  <body class="h-100">
+    <div class="container-fluid">
+      <div class="row">
+        <main class="login-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+              <div class="col-lg-4 ">
+                <!-- Input & Button Groups -->
+                <div class="card card-small mb-4">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Welcome to Edu OPMS.</h6>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item px-3">
+                      <form action="" method="post" class="form-validate" novalidate>
+                        {{ form.hidden_tag() }}
+                        <!-- Seamless Input Groups -->
+                        <strong class="text-muted d-block mb-2">用户名</strong>
+                        <div class="input-group mb-3">
+                          <div class="input-group input-group-seamless">
+                            <span class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">person</i>
+                              </span>
+                            </span>
+                            {{ form.username(class="form-control") }}
+						  </div>
+                        </div>
+						<strong class="text-muted d-block mb-2">密码</strong>
+                        <div class="input-group mb-3">
+                          <div class="input-group input-group-seamless">
+                            <span class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">lock</i>
+                              </span>
+                            </span>
+                            {{ form.password(class="form-control") }}
+						  </div>
+                          <div class="form-group">
+
+                        {% for message in get_flashed_messages() %}
+                        <div class="is-invalid invalid-feedback" style="display: block;">{{ message }}</div>
+                        {% endfor %}
+
+                    </div>
+                        </div>
+                        {{ form.submit(class="btn btn-accent btn-block") }}
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </main>
+      </div>
+    </div>
+    
+    </div>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/Chart.min.js"></script>
+    <script src="/static/js/shards.min.js"></script>
+    <script src="/static/js/jquery.sharrre.min.js"></script>
+    <script src="/static/js/extras.1.1.0.min.js"></script>
+    <script src="/static/js/shards-dashboards.1.1.0.min.js"></script>
+    <script src="/static/js/app/app-blog-overview.1.1.0.js"></script>
+  </body>
+</html>
